@@ -1,10 +1,10 @@
 {
   "name": "djolar-searcher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Djolar format searcher",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ts": "tsc --build tsconfig.json"
   },
   "keywords": [
     "djolar"
@@ -15,7 +15,6 @@
     "axios": "^0.19.2"
   },
   "devDependencies": {
-    "prettier": "^2.0.5",
     "typescript": "^3.9.6"
   }
 }

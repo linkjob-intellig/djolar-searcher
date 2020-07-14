@@ -1,6 +1,6 @@
 "use strict";
-exports.__esModule = true;
-exports.createSearcherPagination = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SearcherDefaults = exports.createSearcherPagination = void 0;
 var adapter_web_1 = require("./adapter_web");
 function createSearcherPagination(initialRowsPerPage) {
     if (initialRowsPerPage === void 0) { initialRowsPerPage = 10; }
@@ -9,18 +9,21 @@ function createSearcherPagination(initialRowsPerPage) {
         descending: false,
         page: 1,
         rowsPerPage: initialRowsPerPage,
-        rowsNumber: 0
+        rowsNumber: 0,
     };
 }
 exports.createSearcherPagination = createSearcherPagination;
+exports.SearcherDefaults = {
+    searchFunc: adapter_web_1.defaultWebSearchFunc,
+};
 var DjolarSearcher = /** @class */ (function () {
     function DjolarSearcher(opt) {
         this.pagination = createSearcherPagination();
         this.globalOption = {};
-        this.searchFunc = adapter_web_1.defaultWebSearchFunc;
+        this.searchFunc = exports.SearcherDefaults.searchFunc;
         this.hooks = {
             onFail: [],
-            onSuccess: []
+            onSuccess: [],
         };
         if (opt)
             this.setOption(opt);
@@ -47,33 +50,35 @@ var DjolarSearcher = /** @class */ (function () {
         this.setOption({
             pagination: Object.assign({
                 page: 1,
-                rowsNumber: 0
-            }, pagination)
+                rowsNumber: 0,
+            }, pagination),
         });
     };
     DjolarSearcher.prototype.searchWithPagination = function (axios, option) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.searchOnly(axios, option).then(function (resolves) {
-                var resolvedPagination = (resolves.response.count || 0) > 0 ? {
-                    rowsNumber: resolves.response.count
-                } : {};
+            _this.searchOnly(axios, option)
+                .then(function (resolves) {
+                var resolvedPagination = (resolves.response.count || 0) > 0
+                    ? {
+                        rowsNumber: resolves.response.count,
+                    }
+                    : {};
                 _this.pagination = Object.assign(_this.pagination, option.pagination, resolvedPagination);
-                console.log(resolves);
                 resolve(resolves);
-            })["catch"](reject);
+            })
+                .catch(reject);
         });
     };
     DjolarSearcher.prototype.searchOnly = function (axios, option) {
         return this.searchFunc(this, axios, Object.assign(option, {
             pagination: Object.assign(this.pagination, option.pagination),
             filter: Object.assign({}, this.globalOption.filter, option.filter),
-            listUrl: option.listUrl || this.globalOption.listUrl || '',
+            listUrl: option.listUrl || this.globalOption.listUrl || "",
             extraQuery: Object.assign({}, this.globalOption.extraQuery, option.extraQuery),
-            config: Object.assign({}, this.globalOption.config, option.config)
+            config: Object.assign({}, this.globalOption.config, option.config),
         }));
     };
-    ;
     return DjolarSearcher;
 }());
-exports["default"] = DjolarSearcher;
+exports.default = DjolarSearcher;

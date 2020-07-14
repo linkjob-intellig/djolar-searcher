@@ -156,7 +156,6 @@ class DjolarSearcher<O = any> {
             option.pagination,
             resolvedPagination
           );
-          console.log(resolves);
           resolve(resolves);
         })
         .catch(reject);

@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.WebStyleSearcherAdapter = exports.defaultWebSearchFunc = exports.defaultWebListResponse = void 0;
 var djolar_1 = require("./djolar");
 function buildDjolarPaginationURL(apiUrl, searchParams, pagination) {
@@ -20,7 +20,7 @@ function buildDjolarPaginationURL(apiUrl, searchParams, pagination) {
     if ((pagination === null || pagination === void 0 ? void 0 : pagination.sortBy) && pagination.sortBy.length > 0) {
         query.s = djolar_1.encodeSortByFields(pagination.sortBy.map(function (s) { return ({
             name: s.name,
-            descend: s.descend
+            descend: s.descend,
         }); }));
     }
     var queryStr = Object.entries(query)
@@ -35,7 +35,7 @@ function buildDjolarPaginationURL(apiUrl, searchParams, pagination) {
 }
 exports.defaultWebListResponse = function () { return ({
     count: 0,
-    result: []
+    result: [],
 }); };
 exports.defaultWebSearchFunc = function (searcher, axios, option) {
     var params = djolar_1.getDjolarParams(option.filter);
@@ -56,13 +56,14 @@ exports.defaultWebSearchFunc = function (searcher, axios, option) {
             var restfulResp = {
                 response: Object.assign({
                     count: 0,
-                    result: []
+                    result: [],
                 }, axiosResp.data),
-                axiosResponse: axiosResp
+                axiosResponse: axiosResp,
             };
             searcher.hooks.onSuccess.forEach(function (fn) { return fn(restfulResp, searcher); });
             resolve(restfulResp);
-        })["catch"](function (err) {
+        })
+            .catch(function (err) {
             searcher.hooks.onFail.forEach(function (fn) { return fn(err, searcher); });
             reject(err);
         });
@@ -70,7 +71,7 @@ exports.defaultWebSearchFunc = function (searcher, axios, option) {
 };
 exports.WebStyleSearcherAdapter = function (searcher) {
     searcher.setOption({
-        searchFunc: exports.defaultWebSearchFunc
+        searchFunc: exports.defaultWebSearchFunc,
     });
 };
-exports["default"] = exports.WebStyleSearcherAdapter;
+exports.default = exports.WebStyleSearcherAdapter;

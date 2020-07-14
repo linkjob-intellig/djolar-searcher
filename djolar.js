@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDjolarParams = exports.decodeQueryString = exports.encodeSortByFields = exports.encodeSearchFields = exports.DJOLAR_TIMESTAMP_FORMAT = exports.DJOLAR_OP_NOT_IN = exports.DJOLAR_OP_IN = exports.DJOLAR_OP_EQUAL = exports.DJOLAR_OP_GREATER = exports.DJOLAR_OP_LESS_THAN = exports.DJOLAR_OP_GREATER_THAN_OR_EQUAL = exports.DJOLAR_OP_LESS_THAN_OR_EQUAL = exports.DJOLAR_OP_CONTAIN = void 0;
 exports.DJOLAR_OP_CONTAIN = "co";
 exports.DJOLAR_OP_LESS_THAN_OR_EQUAL = "lte";
@@ -108,7 +108,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({
                 op: exports.DJOLAR_OP_EQUAL,
                 value: matches[2],
-                field: matches[1]
+                field: matches[1],
             });
             continue;
         }
@@ -117,7 +117,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({
                 op: exports.DJOLAR_OP_CONTAIN,
                 value: matches[2],
-                field: matches[1]
+                field: matches[1],
             });
             continue;
         }
@@ -126,7 +126,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({
                 op: exports.DJOLAR_OP_LESS_THAN,
                 value: matches[2],
-                field: matches[1]
+                field: matches[1],
             });
             continue;
         }
@@ -135,7 +135,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({
                 op: exports.DJOLAR_OP_LESS_THAN_OR_EQUAL,
                 value: matches[2],
-                field: matches[1]
+                field: matches[1],
             });
             continue;
         }
@@ -144,7 +144,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({
                 op: exports.DJOLAR_OP_GREATER,
                 value: matches[2],
-                field: matches[1]
+                field: matches[1],
             });
             continue;
         }
@@ -153,7 +153,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({
                 op: exports.DJOLAR_OP_GREATER_THAN_OR_EQUAL,
                 value: matches[2],
-                field: matches[1]
+                field: matches[1],
             });
             continue;
         }
@@ -168,7 +168,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({
                 op: exports.DJOLAR_OP_NOT_IN,
                 value: matches[2],
-                field: matches[1]
+                field: matches[1],
             });
         }
     }
@@ -184,7 +184,7 @@ exports.getDjolarParams = function (searchParams) {
         params.push({
             field: name_1,
             value: searchParams[name_1].value,
-            op: searchParams[name_1].op
+            op: searchParams[name_1].op,
         });
     }
     return params;
