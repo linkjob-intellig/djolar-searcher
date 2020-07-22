@@ -2,7 +2,7 @@
   "name": "djolar-searcher",
   "version": "1.0.3",
   "description": "Djolar format searcher",
-  "main": "index.js",
+  "main": "searcher.js",
   "scripts": {
     "ts": "tsc --build tsconfig.json"
   },

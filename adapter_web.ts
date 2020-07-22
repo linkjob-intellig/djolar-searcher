@@ -6,15 +6,15 @@ import {
 } from "./djolar";
 import {
   SearcherAdapter,
-  SearcherPagination,
+  SearcherPagination, SearcherPaginationOptions,
   SearcherResolves,
   SearchFunc,
-} from "./index";
+} from "./searcher";
 
 function buildDjolarPaginationURL(
   apiUrl: string,
   searchParams: DjolarField[],
-  pagination?: SearcherPagination
+  pagination?: SearcherPaginationOptions
 ) {
   const query: Record<string, any> = {};
 

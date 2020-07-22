@@ -1,9 +1,9 @@
 import {
-  SearcherAdapter,
-  SearcherPagination,
-  SearcherResolves,
-  SearchFunc,
-} from "./index";
+    SearcherAdapter,
+    SearcherPagination, SearcherPaginationOptions,
+    SearcherResolves,
+    SearchFunc,
+} from "./searcher";
 import {
   DjolarField,
   encodeSearchFields,
@@ -26,7 +26,7 @@ export const defaultGoMicroListResponse: <T>() => SearcherGoMicroStyleResponse<
 function buildDjolarPaginationURLMicro(
   apiUrl: string,
   searchParams: DjolarField[],
-  pagination?: SearcherPagination
+  pagination?: SearcherPaginationOptions
 ) {
   const query: Record<string, any> = {};
 

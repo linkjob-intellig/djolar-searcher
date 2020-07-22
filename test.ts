@@ -1,4 +1,4 @@
-import DjolarSearcher from "./index";
+import DjolarSearcher from "./searcher";
 import axios, { AxiosError } from "axios";
 import { GoMicroStyleSearcherAdapter } from "./adapter_go_micro";
 
