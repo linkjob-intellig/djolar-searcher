@@ -1,14 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.djolar = exports.defaultWebSearchFunc = exports.WebStyleSearcherAdapter = exports.defaultGoMicroSearchFunc = exports.GoMicroStyleSearcherAdapter = exports.SearcherDefaults = exports.createSearcherPagination = void 0;
+exports.SearcherDefaults = exports.createSearcherPagination = void 0;
 var adapter_web_1 = require("./adapter_web");
-exports.WebStyleSearcherAdapter = adapter_web_1.default;
-Object.defineProperty(exports, "defaultWebSearchFunc", { enumerable: true, get: function () { return adapter_web_1.defaultWebSearchFunc; } });
-var adapter_go_micro_1 = require("./adapter_go_micro");
-Object.defineProperty(exports, "GoMicroStyleSearcherAdapter", { enumerable: true, get: function () { return adapter_go_micro_1.GoMicroStyleSearcherAdapter; } });
-Object.defineProperty(exports, "defaultGoMicroSearchFunc", { enumerable: true, get: function () { return adapter_go_micro_1.defaultGoMicroSearchFunc; } });
-var djolar = require("./djolar");
-exports.djolar = djolar;
 function createSearcherPagination(initialRowsPerPage) {
     if (initialRowsPerPage === void 0) { initialRowsPerPage = 10; }
     return {

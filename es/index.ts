@@ -1,14 +1,15 @@
 import { defaultGoMicroSearchFunc, GoMicroStyleSearcherAdapter } from "./adapter_go_micro"
 import { defaultWebSearchFunc, WebStyleSearcherAdapter } from "./adapter_web"
-import * as Djolar from './djolar'
+import * as lib from './djolar'
 import DjolarSearcher from './searcher'
 
-export {
+export const djolar = {
     defaultGoMicroSearchFunc,
     GoMicroStyleSearcherAdapter,
     defaultWebSearchFunc,
     WebStyleSearcherAdapter,
-    Djolar,
+    DjolarSearcher,
+    lib,
 }
 
-export default DjolarSearcher;
+export default djolar;

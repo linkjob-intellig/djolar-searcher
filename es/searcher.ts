@@ -7,7 +7,6 @@ import {
 } from "axios";
 import WebStyleSearcherAdapter, { defaultWebSearchFunc } from "./adapter_web";
 import { GoMicroStyleSearcherAdapter, defaultGoMicroSearchFunc } from "./adapter_go_micro";
-import * as djolar from './djolar';
 
 export interface SearcherSortBy {
   name: string;
@@ -179,16 +178,5 @@ class DjolarSearcher<O = any> {
     );
   }
 }
-
-export {
-  GoMicroStyleSearcherAdapter,
-  defaultGoMicroSearchFunc,
-  WebStyleSearcherAdapter,
-  defaultWebSearchFunc,
-}
-
-export {
-  djolar
-};
 
 export default DjolarSearcher;
