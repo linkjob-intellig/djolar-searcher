@@ -24,8 +24,8 @@ export declare function createSearcherPagination(initialRowsPerPage?: number): {
 };
 export declare type SearcherPaginationOptions = Partial<SearcherPagination>;
 export interface SearcherResolves<T = any> {
-    response: SearcherResponse<T>;
-    axiosResponse?: AxiosResponse;
+    response: SearcherResponse<T> | any;
+    axiosResponse?: AxiosResponse | any;
 }
 export interface SearchOption {
     listUrl: string;
