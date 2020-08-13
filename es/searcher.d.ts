@@ -4,7 +4,7 @@ export interface SearcherSortBy {
     name: string;
     descend?: boolean;
 }
-export interface SearcherResponse<T> {
+export interface SearcherResponse<T = any> {
     result: T[];
     count: number;
     msg?: string;
@@ -23,7 +23,7 @@ export declare function createSearcherPagination(initialRowsPerPage?: number): {
     rowsNumber: number;
 };
 export declare type SearcherPaginationOptions = Partial<SearcherPagination>;
-export interface SearcherResolves<T> {
+export interface SearcherResolves<T = any> {
     response: SearcherResponse<T>;
     axiosResponse?: AxiosResponse;
 }
@@ -36,15 +36,15 @@ export interface SearchOption {
     pagination: SearcherPaginationOptions;
 }
 export declare type SearchOptions = Partial<SearchOption>;
-export interface SearcherContextOptions<T> {
+export interface SearcherContextOptions<T = any> {
     pagination?: SearcherPaginationOptions;
     globalSearchOption?: SearchOptions;
     searchFunc?: SearchFunc<T>;
 }
-export declare type FailHook<T> = (err: AxiosError | any, searcher: DjolarSearcher<T>) => void;
-export declare type SuccessHook<T> = (resolves: SearcherResolves<T>, searcher: DjolarSearcher<T>) => void;
-export declare type SearchFunc<T> = (searcher: DjolarSearcher<T>, axios: AxiosInstance, option: SearchOption) => Promise<SearcherResolves<T>>;
-export declare type SearcherAdapter<T> = (searcher: DjolarSearcher<T>) => void;
+export declare type FailHook<T = any> = (err: AxiosError | any, searcher: DjolarSearcher<T>) => void;
+export declare type SuccessHook<T = any> = (resolves: SearcherResolves<T>, searcher: DjolarSearcher<T>) => void;
+export declare type SearchFunc<T = any> = (searcher: DjolarSearcher<T>, axios: AxiosInstance, option: SearchOption) => Promise<SearcherResolves<T>>;
+export declare type SearcherAdapter<T = any> = (searcher: DjolarSearcher<T>) => void;
 export declare const SearcherDefaults: {
     searchFunc: SearchFunc<any>;
 };
