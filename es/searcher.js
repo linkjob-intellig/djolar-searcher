@@ -78,6 +78,7 @@ var DjolarSearcher = /** @class */ (function () {
             extraQuery: Object.assign({}, this.globalOption.extraQuery, option.extraQuery),
             extraData: Object.assign({}, this.globalOption.extraData, option.extraData),
             config: Object.assign({}, this.globalOption.config, option.config),
+            castFunc: option.castFunc || this.globalOption.castFunc || (function (data) { return data; }),
         }));
     };
     return DjolarSearcher;

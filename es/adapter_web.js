@@ -60,6 +60,7 @@ exports.defaultWebSearchFunc = function (searcher, axios, option) {
                 }, axiosResp.data),
                 axiosResponse: axiosResp,
             };
+            restfulResp.response.result = option.castFunc(restfulResp.response.result);
             searcher.hooks.onSuccess.forEach(function (fn) { return fn(restfulResp, searcher); });
             resolve(restfulResp);
         })

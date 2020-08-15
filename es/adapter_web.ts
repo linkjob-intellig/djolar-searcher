@@ -98,6 +98,7 @@ export const defaultWebSearchFunc: SearchFunc<any> = (
           ),
           axiosResponse: axiosResp,
         };
+        restfulResp.response.result = option.castFunc(restfulResp.response.result);
         searcher.hooks.onSuccess.forEach((fn) => fn(restfulResp, searcher));
         resolve(restfulResp);
       })

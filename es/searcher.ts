@@ -43,13 +43,17 @@ export interface SearcherResolves<T = any> {
   axiosResponse?: AxiosResponse | any;
 }
 
-export interface SearchOption {
+// CastFunc is a function called when the result got, it can set default values for result
+export declare type CastFunc<T = any> = (data : T[]) => T[]
+
+export interface SearchOption<T = any> {
   listUrl: string;
   filter: Record<string, DjolarField>;
   config: AxiosRequestConfig;
   extraQuery: Record<string, any>;
   extraData: Record<string, any>;
   pagination: SearcherPaginationOptions;
+  castFunc : CastFunc<T>;
 }
 
 export declare type SearchOptions = Partial<SearchOption>;
@@ -174,6 +178,7 @@ class DjolarSearcher<O = any> {
         ),
         extraData: Object.assign({}, this.globalOption.extraData, option.extraData),
         config: Object.assign({}, this.globalOption.config, option.config),
+        castFunc: option.castFunc || this.globalOption.castFunc || (data => data),
       })
     );
   }

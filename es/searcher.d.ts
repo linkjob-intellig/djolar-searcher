@@ -27,13 +27,15 @@ export interface SearcherResolves<T = any> {
     response: SearcherResponse<T> | any;
     axiosResponse?: AxiosResponse | any;
 }
-export interface SearchOption {
+export declare type CastFunc<T = any> = (data: T[]) => T[];
+export interface SearchOption<T = any> {
     listUrl: string;
     filter: Record<string, DjolarField>;
     config: AxiosRequestConfig;
     extraQuery: Record<string, any>;
     extraData: Record<string, any>;
     pagination: SearcherPaginationOptions;
+    castFunc: CastFunc<T>;
 }
 export declare type SearchOptions = Partial<SearchOption>;
 export interface SearcherContextOptions<T = any> {
