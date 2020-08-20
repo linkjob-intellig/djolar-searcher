@@ -179,13 +179,9 @@ exports.decodeQueryString = function (queryStr) {
  * @param {Object} searchParams The search params
  */
 exports.getDjolarParams = function (searchParams) {
-    var params = [];
-    for (var name_1 in searchParams) {
-        params.push({
-            field: name_1,
-            value: searchParams[name_1].value,
-            op: searchParams[name_1].op,
-        });
-    }
-    return params;
+    return Object.values(searchParams).map(function (param) { return ({
+        field: param.field,
+        op: param.op,
+        value: param.value,
+    }); });
 };

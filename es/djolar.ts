@@ -203,15 +203,10 @@ export const decodeQueryString = function (queryStr: string) {
  * Convert to djolar parameters
  * @param {Object} searchParams The search params
  */
-export const getDjolarParams = function (searchParams: DjolarSearchParams) {
-  const params: DjolarField[] = [];
-  for (const name in searchParams) {
-    params.push({
-      field: name,
-      value: searchParams[name].value,
-      op: searchParams[name].op,
-    });
-  }
-
-  return params;
+export const getDjolarParams = function (searchParams: DjolarSearchParams) : DjolarField[] {
+  return Object.values(searchParams).map(param => ({
+    field: param.field,
+    op: param.op,
+    value: param.value,
+  }));
 };
