@@ -1,6 +1,6 @@
 {
   "name": "djolar-searcher",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Djolar format searcher",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "linkjob",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.20.0"
   },
   "devDependencies": {
     "typescript": "^3.9.6"
