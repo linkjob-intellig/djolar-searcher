@@ -119,7 +119,7 @@ export const decodeQueryString = function (queryStr: string) {
   const tokens = query.split("|");
   const fields: DjolarField[] = [];
   for (const token of tokens) {
-    let matches = token.match(/(\w+)__eq__(\S+)$/);
+    let matches = token.match(/(\w+)__eq__(.+)/);
     if (matches !== null) {
       fields.push({
         op: DJOLAR_OP_EQUAL,
@@ -129,7 +129,7 @@ export const decodeQueryString = function (queryStr: string) {
       continue;
     }
 
-    matches = token.match(/(\w+)__co__(\S+)$/);
+    matches = token.match(/(\w+)__co__(.+)/);
     if (matches !== null) {
       fields.push({
         op: DJOLAR_OP_CONTAIN,
@@ -139,7 +139,7 @@ export const decodeQueryString = function (queryStr: string) {
       continue;
     }
 
-    matches = token.match(/(\w+)__lt__(\S+)$/);
+    matches = token.match(/(\w+)__lt__(.+)/);
     if (matches !== null) {
       fields.push({
         op: DJOLAR_OP_LESS_THAN,
@@ -149,7 +149,7 @@ export const decodeQueryString = function (queryStr: string) {
       continue;
     }
 
-    matches = token.match(/(\w+)__lte__(\S+)$/);
+    matches = token.match(/(\w+)__lte__(.+)/);
     if (matches !== null) {
       fields.push({
         op: DJOLAR_OP_LESS_THAN_OR_EQUAL,
@@ -159,7 +159,7 @@ export const decodeQueryString = function (queryStr: string) {
       continue;
     }
 
-    matches = token.match(/(\w+)__gt__(\S+)$/);
+    matches = token.match(/(\w+)__gt__(.+)/);
     if (matches !== null) {
       fields.push({
         op: DJOLAR_OP_GREATER,
@@ -169,7 +169,7 @@ export const decodeQueryString = function (queryStr: string) {
       continue;
     }
 
-    matches = token.match(/(\w+)__gte__(\S+)$/);
+    matches = token.match(/(\w+)__gte__(.+)/);
     if (matches !== null) {
       fields.push({
         op: DJOLAR_OP_GREATER_THAN_OR_EQUAL,
@@ -186,7 +186,7 @@ export const decodeQueryString = function (queryStr: string) {
       continue;
     }
 
-    matches = token.match(/(\w+)__ni__(\S+)$/);
+    matches = token.match(/(\w+)__ni__(.+)/);
     if (matches !== null) {
       fields.push({
         op: DJOLAR_OP_NOT_IN,

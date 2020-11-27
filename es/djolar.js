@@ -103,7 +103,7 @@ exports.decodeQueryString = function (queryStr) {
     var fields = [];
     for (var _i = 0, tokens_1 = tokens; _i < tokens_1.length; _i++) {
         var token = tokens_1[_i];
-        var matches = token.match(/(\w+)__eq__(\S+)$/);
+        var matches = token.match(/(\w+)__eq__(.+)/);
         if (matches !== null) {
             fields.push({
                 op: exports.DJOLAR_OP_EQUAL,
@@ -112,7 +112,7 @@ exports.decodeQueryString = function (queryStr) {
             });
             continue;
         }
-        matches = token.match(/(\w+)__co__(\S+)$/);
+        matches = token.match(/(\w+)__co__(.+)/);
         if (matches !== null) {
             fields.push({
                 op: exports.DJOLAR_OP_CONTAIN,
@@ -121,7 +121,7 @@ exports.decodeQueryString = function (queryStr) {
             });
             continue;
         }
-        matches = token.match(/(\w+)__lt__(\S+)$/);
+        matches = token.match(/(\w+)__lt__(.+)/);
         if (matches !== null) {
             fields.push({
                 op: exports.DJOLAR_OP_LESS_THAN,
@@ -130,7 +130,7 @@ exports.decodeQueryString = function (queryStr) {
             });
             continue;
         }
-        matches = token.match(/(\w+)__lte__(\S+)$/);
+        matches = token.match(/(\w+)__lte__(.+)/);
         if (matches !== null) {
             fields.push({
                 op: exports.DJOLAR_OP_LESS_THAN_OR_EQUAL,
@@ -139,7 +139,7 @@ exports.decodeQueryString = function (queryStr) {
             });
             continue;
         }
-        matches = token.match(/(\w+)__gt__(\S+)$/);
+        matches = token.match(/(\w+)__gt__(.+)/);
         if (matches !== null) {
             fields.push({
                 op: exports.DJOLAR_OP_GREATER,
@@ -148,7 +148,7 @@ exports.decodeQueryString = function (queryStr) {
             });
             continue;
         }
-        matches = token.match(/(\w+)__gte__(\S+)$/);
+        matches = token.match(/(\w+)__gte__(.+)/);
         if (matches !== null) {
             fields.push({
                 op: exports.DJOLAR_OP_GREATER_THAN_OR_EQUAL,
@@ -163,7 +163,7 @@ exports.decodeQueryString = function (queryStr) {
             fields.push({ op: exports.DJOLAR_OP_IN, value: values, field: matches[1] });
             continue;
         }
-        matches = token.match(/(\w+)__ni__(\S+)$/);
+        matches = token.match(/(\w+)__ni__(.+)/);
         if (matches !== null) {
             fields.push({
                 op: exports.DJOLAR_OP_NOT_IN,
